@@ -1,5 +1,5 @@
 {
-  "name": "my-project",
+  "name": "remix-imagekit-harperdb-image-gallery",
   "sideEffects": false,
   "type": "module",
   "scripts": {
