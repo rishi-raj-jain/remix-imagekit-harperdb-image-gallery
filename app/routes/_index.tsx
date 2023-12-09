@@ -5,12 +5,23 @@ import { ActionFunctionArgs, redirect } from '@remix-run/node'
 
 export async function action({ request }: ActionFunctionArgs) {
   const body = await request.formData()
+  let photographDataURL, photographerDataURL
   const alt = body.get('alt') as string
   const slug = body.get('slug') as string
   const name = body.get('name') as string
   const tagline = body.get('tagline') as string
   const photograph = body.get('_photograph') as string
+  if (photograph) {
+    const tmp = await fetch(photograph + '?tr=bl-90')
+    const buffer = Buffer.from(await tmp.arrayBuffer())
+    photographDataURL = `data:image/jpeg;base64,${buffer.toString('base64')}`
+  }
   const photographerURL = body.get('_photographer-image') as string
+  if (photographerURL) {
+    const tmp = await fetch(photographerURL + '?tr=bl-90')
+    const buffer = Buffer.from(await tmp.arrayBuffer())
+    photographerDataURL = `data:image/jpeg;base64,${buffer.toString('base64')}`
+  }
   const { inserted_hashes } = await insert([
     {
       alt,
@@ -19,6 +30,8 @@ export async function action({ request }: ActionFunctionArgs) {
       tagline,
       photograph,
       photographerURL,
+      photographDataURL,
+      photographerDataURL,
     },
   ])
   if (inserted_hashes && inserted_hashes[0]) return redirect('/pics/' + slug)
