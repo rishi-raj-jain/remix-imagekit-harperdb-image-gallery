@@ -1,26 +1,24 @@
-const authenticationEndpoint = '/imagekit'
-const urlEndpoint = 'https://ik.imagekit.io/vjeqenuhn'
-const publicKey = 'public_yV9dop1iOZyFb2FnBjsdQpB+rXQ='
-
 import { useState } from 'react'
+import BlurUpImage from './BlurUpImage'
 import { IKContext, IKUpload } from 'imagekitio-react'
 
 export default function () {
   const [uploadedURL, setUploadedURL] = useState()
   const [uploadedImage, setUploadedImage] = useState()
+  const urlEndpoint = 'https://ik.imagekit.io/vjeqenuhn'
+  const publicKey = 'public_yV9dop1iOZyFb2FnBjsdQpB+rXQ='
   return (
     <IKContext
       publicKey={publicKey}
       urlEndpoint={urlEndpoint}
       authenticator={async () => {
-        const tmpCall = await fetch(authenticationEndpoint)
-        return await tmpCall.json()
+        return await (await fetch('/imagekit')).json()
       }}
     >
       <input value={uploadedURL} className="hidden" id="imageURL" name="imageURL" />
       {uploadedImage && (
         <div className="mt-8 border">
-          <img src={uploadedImage} />
+          <BlurUpImage loading="lazy" alt="Rishi" url={uploadedImage} />
         </div>
       )}
       <div

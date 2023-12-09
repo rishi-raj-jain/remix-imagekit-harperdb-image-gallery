@@ -16,7 +16,7 @@ export async function action({ request }: ActionFunctionArgs) {
       slug,
       name,
       tagline,
-      imageURL
+      imageURL,
     },
   ])
   if (inserted_hashes && inserted_hashes[0]) return redirect('/pics/' + slug)

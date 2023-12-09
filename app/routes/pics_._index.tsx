@@ -1,3 +1,4 @@
+import BlurUpImage from '~/components/BlurUpImage'
 import { searchByValue } from '~/lib/harper.server'
 import { Link, useLoaderData } from '@remix-run/react'
 
@@ -15,13 +16,7 @@ export default function Pics() {
           .filter((i: { [k: string]: string }) => i.slug && i.imageURL)
           .map((i: { [k: string]: string }, _: number) => (
             <Link key={_} to={'/pics/' + i.slug}>
-              <img
-                alt={i.alt}
-                src={i.imageURL}
-                loading={_ === 0 ? 'eager' : 'lazy'}
-                className="bg-cover bg-center bg-no-repeat transform will-change-auto"
-                style={{ backgroundImage: `url(${i.imageURL + '?tr=bl-50'})`, transform: 'translate3d(0, 0, 0)' }}
-              />
+              <BlurUpImage alt={i.alt} url={i.imageURL} loading={_ === 0 ? 'eager' : 'lazy'} />
             </Link>
           ))}
       </div>

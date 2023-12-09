@@ -1,4 +1,5 @@
 import { useLoaderData } from '@remix-run/react'
+import BlurUpImage from '~/components/BlurUpImage'
 import { searchByValue } from '~/lib/harper.server'
 import { LoaderFunctionArgs, redirect } from '@remix-run/node'
 
@@ -15,25 +16,13 @@ export default function Pic() {
     <div className="mt-8 flex flex-col">
       <span className="text-2xl font-semibold">{image.name}</span>
       <div className="mt-8 flex flex-row items-start gap-x-3">
-        <img
-          loading="lazy"
-          alt="Rishi" // {image.alt}
-          src="https://ik.imagekit.io/vjeqenuhn/static/favicon-image.jpg" // {image.imageURL}
-          className="rounded-full w-[50px] h-[50px] bg-cover bg-center bg-no-repeat transform will-change-auto"
-          style={{ backgroundImage: `url(${'https://ik.imagekit.io/vjeqenuhn/static/favicon-image.jpg' + '?tr=bl-50'})`, transform: 'translate3d(0, 0, 0)' }}
-        />
+        <BlurUpImage className="rounded-full w-[50px] h-[50px]" loading="lazy" alt="Rishi" url="https://ik.imagekit.io/vjeqenuhn/static/favicon-image.jpg" />
         <div className="flex flex-col">
           <span className="text-black font-semibold">{image.name}</span>
           <span className="text-gray-400">{image.tagline}</span>
         </div>
       </div>
-      <img
-        loading="eager"
-        alt={image.alt}
-        src={image.imageURL}
-        className="mt-8 bg-cover bg-center bg-no-repeat transform will-change-auto"
-        style={{ backgroundImage: `url(${image.imageURL + '?tr=bl-50'})`, transform: 'translate3d(0, 0, 0)' }}
-      />
+      <BlurUpImage className="mt-8" alt={image.alt} url={image.imageURL} loading={'eager'} />
     </div>
   )
 }
