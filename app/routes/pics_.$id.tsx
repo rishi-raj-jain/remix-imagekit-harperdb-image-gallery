@@ -16,7 +16,7 @@ export default function Pic() {
     <div className="mt-8 flex flex-col">
       <span className="text-2xl font-semibold">{image.name}</span>
       <div className="mt-8 flex flex-row items-start gap-x-3">
-        <Image backgroundImage={image.photographerURL} className="rounded-full w-[50px] h-[50px]" loading="lazy" alt={image.name} url={image.photographerURL} />
+        <Image backgroundImage={image.photographerDataURL} className="rounded-full w-[50px] h-[50px]" loading="lazy" alt={image.name} url={image.photographerURL} />
         <div className="flex flex-col">
           <span className="text-black font-semibold">{image.name}</span>
           <span className="text-gray-400">{image.tagline}</span>
