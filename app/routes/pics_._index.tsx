@@ -1,4 +1,4 @@
-import BlurUpImage from '~/components/BlurUpImage'
+import Image from '~/components/Image'
 import { searchByValue } from '~/lib/harper.server'
 import { Link, useLoaderData } from '@remix-run/react'
 
@@ -13,10 +13,10 @@ export default function Pics() {
       <span className="text-2xl font-semibold">My Collection</span>
       <div className="mt-8 grid grid-cols-2 gap-8">
         {images
-          .filter((i: { [k: string]: string }) => i.slug && i.imageURL)
+          .filter((i: { [k: string]: string }) => i.slug && i.photograph)
           .map((i: { [k: string]: string }, _: number) => (
             <Link key={_} to={'/pics/' + i.slug}>
-              <BlurUpImage alt={i.alt} url={i.imageURL} loading={_ === 0 ? 'eager' : 'lazy'} />
+              <Image alt={i.alt} url={i.photograph} loading={_ === 0 ? 'eager' : 'lazy'} />
             </Link>
           ))}
       </div>

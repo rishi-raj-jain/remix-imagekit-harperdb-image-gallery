@@ -1,5 +1,5 @@
+import Image from '~/components/Image'
 import { useLoaderData } from '@remix-run/react'
-import BlurUpImage from '~/components/BlurUpImage'
 import { searchByValue } from '~/lib/harper.server'
 import { LoaderFunctionArgs, redirect } from '@remix-run/node'
 
@@ -16,13 +16,13 @@ export default function Pic() {
     <div className="mt-8 flex flex-col">
       <span className="text-2xl font-semibold">{image.name}</span>
       <div className="mt-8 flex flex-row items-start gap-x-3">
-        <BlurUpImage className="rounded-full w-[50px] h-[50px]" loading="lazy" alt="Rishi" url="https://ik.imagekit.io/vjeqenuhn/static/favicon-image.jpg" />
+        <Image className="rounded-full w-[50px] h-[50px]" loading="lazy" alt={image.name} url={image.photographerURL} />
         <div className="flex flex-col">
           <span className="text-black font-semibold">{image.name}</span>
           <span className="text-gray-400">{image.tagline}</span>
         </div>
       </div>
-      <BlurUpImage className="mt-8" alt={image.alt} url={image.imageURL} loading={'eager'} />
+      <Image className="mt-8" alt={image.alt} url={image.photograph} loading={'eager'} />
     </div>
   )
 }
