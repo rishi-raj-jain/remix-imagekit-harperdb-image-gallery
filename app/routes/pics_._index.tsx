@@ -17,8 +17,8 @@ export default function Pics() {
             <Link key={_} to={'/pics/' + i.slug}>
               <img
                 alt={i.alt}
-                loading="lazy"
                 src={i.imageURL}
+                loading={_ === 0 ? 'eager' : 'lazy'}
                 className="bg-cover bg-center bg-no-repeat transform will-change-auto"
                 style={{ backgroundImage: `url(${i.imageURL + '?tr=bl-50'})`, transform: 'translate3d(0, 0, 0)' }}
               />

@@ -5,6 +5,7 @@
  */
 
 import isbot from 'isbot'
+import * as dotenv from 'dotenv'
 import { PassThrough } from 'node:stream'
 import { RemixServer } from '@remix-run/react'
 import { renderToPipeableStream } from 'react-dom/server'
@@ -12,6 +13,8 @@ import { createReadableStreamFromReadable } from '@remix-run/node'
 import type { AppLoadContext, EntryContext } from '@remix-run/node'
 
 const ABORT_DELAY = 5_000
+
+dotenv.config()
 
 export default function handleRequest(request: Request, responseStatusCode: number, responseHeaders: Headers, remixContext: EntryContext, loadContext: AppLoadContext) {
   return isbot(request.headers.get('user-agent'))
