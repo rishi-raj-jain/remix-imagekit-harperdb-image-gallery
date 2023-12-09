@@ -14,9 +14,8 @@ export default function Pics() {
         {images
           .filter((i: { [k: string]: string }) => i.slug && i.imageURL)
           .map((i: { [k: string]: string }, _: number) => (
-            <Link to={'/pics/' + i.slug}>
+            <Link key={_} to={'/pics/' + i.slug}>
               <img
-                key={_}
                 alt={i.alt}
                 loading="lazy"
                 src={i.imageURL}

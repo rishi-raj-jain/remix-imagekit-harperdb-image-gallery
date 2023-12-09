@@ -1,3 +1,7 @@
+import * as dotenv from 'dotenv'
+
+dotenv.config()
+
 const harperFetch = (body: { [k: string]: any }) => {
   if (!process.env.HARPER_DB_URL) {
     throw new Error('No HARPER_DB_URL environment variable found.')

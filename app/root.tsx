@@ -31,7 +31,7 @@ const App = () => {
             <div className="h-[300px] flex flex-col items-center justify-center px-4 py-2 font-semibold leading-6 text-sm text-black">
               <div className="flex flex-row items-center">
                 <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path
                     fill="currentColor"
                     className="opacity-75"
