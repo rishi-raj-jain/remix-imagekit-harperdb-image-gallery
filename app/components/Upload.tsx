@@ -1,7 +1,6 @@
 import Image from './Image'
 import { useState } from 'react'
 import UploadIcon from './Upload-Icon'
-import { urlEndpoint } from '~/routes/imagekit'
 import { IKContext, IKUpload } from 'imagekitio-react'
 
 export default function ({ selector, className }: { selector: string; className?: string }) {
@@ -16,7 +15,7 @@ export default function ({ selector, className }: { selector: string; className?
   return (
     <IKContext
       publicKey={publicKey}
-      urlEndpoint={urlEndpoint}
+      urlEndpoint="https://ik.imagekit.io/vjeqenuhn"
       authenticator={async () => {
         return await (await fetch('/imagekit')).json()
       }}
