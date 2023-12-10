@@ -59,7 +59,7 @@ export default function Index() {
       <Upload className="mt-4" selector="photograph" />
       <span className="mt-8 font-medium">Photograph's Alt Text</span>
       <input autoComplete="off" id="alt" name="alt" placeholder="Photograph's Alt Text" className="border outline-none focus:border-black rounded mt-2 px-4 py-2" />
-      <span className="mt-8 font-medium">Slug (Optional)</span>
+      <span className="mt-8 font-medium">Slug</span>
       <input autoComplete="off" id="slug" name="slug" placeholder="Slug" className="border outline-none focus:border-black rounded mt-2 px-4 py-2" />
       <button type="submit" className="bg-white hover:bg-black text-black hover:text-white mt-8 px-3 border border-black py-1 rounded max-w-max">
         Publish &rarr;
