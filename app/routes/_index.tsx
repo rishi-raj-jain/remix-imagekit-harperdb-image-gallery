@@ -1,3 +1,4 @@
+import sizeOf from '~/lib/size.server'
 import { Form } from '@remix-run/react'
 import Upload from '~/components/Upload'
 import { insert } from '~/lib/harper.server'
@@ -5,19 +6,29 @@ import { ActionFunctionArgs, redirect } from '@remix-run/node'
 
 export async function action({ request }: ActionFunctionArgs) {
   const body = await request.formData()
-  let photographDataURL, photographerDataURL
+  let photographDataURL, photographHeight, photographWidth, photographerDataURL, photographerHeight, photographerWidth
   const alt = body.get('alt') as string
   const slug = body.get('slug') as string
   const name = body.get('name') as string
   const tagline = body.get('tagline') as string
-  const photograph = body.get('_photograph') as string
-  if (photograph) {
-    const tmp = await fetch(photograph + '?tr=w-200,h-200,bl-90')
+  const photographURL = body.get('_photograph') as string
+  if (photographURL) {
+    const tmp_ = await fetch(photographURL)
+    const buffer_ = Buffer.from(await tmp_.arrayBuffer())
+    const { height, width } = sizeOf(buffer_)
+    photographWidth = width
+    photographHeight = height
+    const tmp = await fetch(photographURL + '?tr=w-200,h-200,bl-90')
     const buffer = Buffer.from(await tmp.arrayBuffer())
     photographDataURL = `data:image/jpeg;base64,${buffer.toString('base64')}`
   }
   const photographerURL = body.get('_photographer-image') as string
   if (photographerURL) {
+    const tmp_ = await fetch(photographerURL)
+    const buffer_ = Buffer.from(await tmp_.arrayBuffer())
+    const { height, width } = sizeOf(buffer_)
+    photographerWidth = width
+    photographerHeight = height
     const tmp = await fetch(photographerURL + '?tr=w-200,h-200,bl-90')
     const buffer = Buffer.from(await tmp.arrayBuffer())
     photographerDataURL = `data:image/jpeg;base64,${buffer.toString('base64')}`
@@ -28,10 +39,14 @@ export async function action({ request }: ActionFunctionArgs) {
       slug,
       name,
       tagline,
-      photograph,
       photographerURL,
-      photographDataURL,
+      photographerWidth,
+      photographerHeight,
       photographerDataURL,
+      photographURL,
+      photographWidth,
+      photographHeight,
+      photographDataURL,
     },
   ])
   if (inserted_hashes && inserted_hashes[0]) return redirect('/pics/' + slug)

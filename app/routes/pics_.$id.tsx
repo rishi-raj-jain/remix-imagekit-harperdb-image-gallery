@@ -16,13 +16,29 @@ export default function Pic() {
     <div className="mt-8 flex flex-col">
       <span className="text-2xl font-semibold">{image.name}</span>
       <div className="mt-8 flex flex-row items-start gap-x-3">
-        <Image backgroundImage={image.photographerDataURL} className="rounded-full w-[50px] h-[50px]" loading="lazy" alt={image.name} url={image.photographerURL} />
+        <Image
+          loading="lazy"
+          alt={image.name}
+          url={image.photographerURL}
+          width={image.photographerWidth}
+          height={image.photographerHeight}
+          className="rounded-full w-[50px] h-[50px]"
+          backgroundImage={image.photographerDataURL}
+        />
         <div className="flex flex-col">
           <span className="text-black font-semibold">{image.name}</span>
           <span className="text-gray-400">{image.tagline}</span>
         </div>
       </div>
-      <Image backgroundImage={image.photographDataURL} className="mt-8" alt={image.alt} url={image.photograph} loading={'eager'} />
+      <Image
+        alt={image.alt}
+        className="mt-8"
+        loading={'eager'}
+        url={image.photographURL}
+        width={image.photographWidth}
+        height={image.photographHeight}
+        backgroundImage={image.photographDataURL}
+      />
     </div>
   )
 }
