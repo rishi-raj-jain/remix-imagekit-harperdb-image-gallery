@@ -17,7 +17,6 @@ export default function Pic() {
       <span className="text-2xl font-semibold">{image.name}</span>
       <div className="mt-8 flex flex-row items-start gap-x-3">
         <Image
-          loading="lazy"
           alt={image.name}
           url={image.photographerURL}
           width={image.photographerWidth}
@@ -32,8 +31,8 @@ export default function Pic() {
       </div>
       <Image
         alt={image.alt}
+        loading="eager"
         className="mt-8"
-        loading={'eager'}
         url={image.photographURL}
         width={image.photographWidth}
         height={image.photographHeight}

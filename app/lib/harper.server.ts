@@ -49,3 +49,14 @@ export const searchByValue = async (search_value: string, search_attribute: stri
   if (!t.ok) return []
   return await t.json()
 }
+
+export const searchByConditions = async (conditions: any[] = [], get_attributes: string[] = ['*']) => {
+  const t = await harperFetch({
+    conditions,
+    get_attributes,
+    operator: 'or',
+    operation: 'search_by_conditions',
+  })
+  if (!t.ok) return []
+  return await t.json()
+}
