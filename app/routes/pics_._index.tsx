@@ -1,8 +1,8 @@
+import { Record } from '~/lib/types'
 import Image from '~/components/Image'
 import { ActionFunctionArgs, json, redirect } from '@remix-run/node'
 import { searchByConditions, searchByValue } from '~/lib/harper.server'
 import { Form, Link, useActionData, useLoaderData } from '@remix-run/react'
-import { Record } from '~/lib/types'
 
 export async function loader() {
   return await searchByValue('*', 'id')
