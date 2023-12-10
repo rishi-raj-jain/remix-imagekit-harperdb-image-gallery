@@ -56,14 +56,7 @@ export default function Pics() {
               />
               <span className="text-gray-400">{i.name}</span>
             </div>
-            <Image
-              alt={i.alt}
-              url={i.photographURL}
-              width={i.photographWidth}
-              height={i.photographHeight}
-              loading={_ === 0 ? 'eager' : 'lazy'}
-              backgroundImage={i.photographDataURL}
-            />
+            <Image alt={i.alt} loading="eager" url={i.photographURL} width={i.photographWidth} height={i.photographHeight} backgroundImage={i.photographDataURL} />
           </Link>
         ))}
     </div>
