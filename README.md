@@ -15,7 +15,7 @@ A boilerplate of AI Chatbot built with [Remix](https://remix.run), [Vercel](http
 
 ### Hooks and Utilities
 
-- [HarperDB CRUD API](lib/harper.js) - NoSQL insert, delete, update and retrieve for a SQL database with HarperDB
+- [HarperDB CRUD API](app/lib/harper.server.ts) - NoSQL insert, delete, update and retrieve for a SQL database with HarperDB
 
 ### UI
 
