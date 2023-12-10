@@ -52,6 +52,8 @@ export default function ({ selector, className }: { selector: string; className?
           onClick={() => {
             setUploadedURL(undefined)
             setUploadedImage(undefined)
+            setUploadedImageW(undefined)
+            setUploadedImageH(undefined)
           }}
           onSuccess={(res) => {
             const { url, height, width } = res

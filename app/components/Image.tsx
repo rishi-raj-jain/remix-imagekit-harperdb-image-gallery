@@ -1,19 +1,19 @@
 export default function ({
   url,
   alt,
+  width,
+  height,
   loading,
   className,
   backgroundImage,
-  height,
-  width,
 }: {
   url: string
   alt?: string
   className?: string
+  width: number | string
+  height: number | string
   backgroundImage?: string
   loading?: 'lazy' | 'eager'
-  height: number | string
-  width: number | string
 }) {
   return (
     <img
