@@ -42,7 +42,18 @@ export default function Pics() {
       {(actionData?.result || images)
         .filter((i: { [k: string]: string }) => i.slug && i.photographURL && i.photographWidth)
         .map((i: { [k: string]: string }, _: number) => (
-          <Link className="mt-8" key={_} to={'/pics/' + i.slug}>
+          <Link className="relative mt-8" key={_} to={'/pics/' + i.slug}>
+            <div className="absolute bg-black border border-gray-600 rounded px-3 py-1 bottom-4 left-4 flex flex-row items-center min-h-[20px] gap-x-2 z-20">
+              <Image
+                alt={i.name}
+                url={i.photographerURL}
+                width={i.photographerWidth}
+                height={i.photographerHeight}
+                backgroundImage={i.photographerDataURL}
+                className="h-[20px] w-[20px] rounded-full"
+              />
+              <span className="text-gray-400">{i.name}</span>
+            </div>
             <Image
               alt={i.alt}
               url={i.photographURL}
