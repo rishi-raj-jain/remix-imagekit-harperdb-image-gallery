@@ -1,7 +1,7 @@
 import Image from './Image'
 import { useState } from 'react'
 import UploadIcon from './Upload-Icon'
-import { UploadProps } from '~/lib/types'
+import { UploadProps } from '@/lib/types'
 import { IKContext, IKUpload } from 'imagekitio-react'
 
 export default function ({ selector, className }: UploadProps) {

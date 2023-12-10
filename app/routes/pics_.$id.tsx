@@ -1,6 +1,6 @@
-import Image from '~/components/Image'
+import Image from '@/components/Image'
 import { useLoaderData } from '@remix-run/react'
-import { searchByValue } from '~/lib/harper.server'
+import { searchByValue } from '@/lib/harper.server'
 import { LoaderFunctionArgs, redirect } from '@remix-run/node'
 
 export async function loader({ params }: LoaderFunctionArgs) {

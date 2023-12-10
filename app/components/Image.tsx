@@ -1,4 +1,4 @@
-import { ImageProps } from '~/lib/types'
+import { ImageProps } from '@/lib/types'
 
 export default function ({ url, alt, width, height, loading, className, backgroundImage }: ImageProps) {
   return (

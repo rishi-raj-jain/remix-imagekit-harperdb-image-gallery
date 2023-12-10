@@ -1,7 +1,7 @@
-import { Record } from '~/lib/types'
-import Image from '~/components/Image'
+import { Record } from '@/lib/types'
+import Image from '@/components/Image'
 import { ActionFunctionArgs, json, redirect } from '@remix-run/node'
-import { searchByConditions, searchByValue } from '~/lib/harper.server'
+import { searchByConditions, searchByValue } from '@/lib/harper.server'
 import { Form, Link, useActionData, useLoaderData } from '@remix-run/react'
 
 export async function loader() {

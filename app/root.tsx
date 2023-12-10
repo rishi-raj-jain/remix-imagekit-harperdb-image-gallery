@@ -1,4 +1,4 @@
-import stylesheet from '~/css/tailwind.css'
+import stylesheet from '@/css/tailwind.css'
 import Pic from './components/Placeholder/Pic'
 import Pics from './components/Placeholder/Pics'
 import type { LinksFunction } from '@remix-run/node'

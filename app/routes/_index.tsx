@@ -1,6 +1,6 @@
 import { Form } from '@remix-run/react'
-import Upload from '~/components/Upload'
-import { insert } from '~/lib/harper.server'
+import Upload from '@/components/Upload'
+import { insert } from '@/lib/harper.server'
 import { ActionFunctionArgs, redirect } from '@remix-run/node'
 
 export async function action({ request }: ActionFunctionArgs) {
