@@ -7,6 +7,8 @@ export default function ({ selector, className }: { selector: string; className?
   const attribute = '_' + selector
   const [uploadedURL, setUploadedURL] = useState()
   const [uploadedImage, setUploadedImage] = useState()
+  const [uploadedImageH, setUploadedImageH] = useState()
+  const [uploadedImageW, setUploadedImageW] = useState()
   const publicKey = 'public_yV9dop1iOZyFb2FnBjsdQpB+rXQ='
   const openLoader = () => {
     const tmp = document.querySelector('#' + selector) as HTMLInputElement
@@ -21,6 +23,8 @@ export default function ({ selector, className }: { selector: string; className?
       }}
     >
       <input value={uploadedURL} className="hidden" id={attribute} name={attribute} />
+      {uploadedImageH && <input value={uploadedImageH} className="hidden" id={attribute + '_h'} name={attribute + '_h'} />}
+      {uploadedImageW && <input value={uploadedImageW} className="hidden" id={attribute + '_w'} name={attribute + '_w'} />}
       {uploadedImage && (
         <div onClick={openLoader} className={[className, 'relative'].filter((i) => i).join(' ')}>
           <svg
@@ -32,7 +36,7 @@ export default function ({ selector, className }: { selector: string; className?
           >
             <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z" />
           </svg>
-          <Image className={[className].filter((i) => i).join(' ')} loading="lazy" url={uploadedImage} />
+          {uploadedImageW && uploadedImageH && <Image width={uploadedImageW} height={uploadedImageH} className={[className].filter((i) => i).join(' ')} url={uploadedImage} />}
         </div>
       )}
       <div
@@ -50,9 +54,11 @@ export default function ({ selector, className }: { selector: string; className?
             setUploadedImage(undefined)
           }}
           onSuccess={(res) => {
-            const { url } = res
+            const { url, height, width } = res
             setUploadedURL(url)
             setUploadedImage(url)
+            setUploadedImageW(width)
+            setUploadedImageH(height)
           }}
         />
       </div>
