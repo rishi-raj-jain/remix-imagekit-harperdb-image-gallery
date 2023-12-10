@@ -12,13 +12,13 @@ export async function action({ request }: ActionFunctionArgs) {
   const tagline = body.get('tagline') as string
   const photograph = body.get('_photograph') as string
   if (photograph) {
-    const tmp = await fetch(photograph + '?tr=bl-90')
+    const tmp = await fetch(photograph + '?tr=w-200,h-200,bl-90')
     const buffer = Buffer.from(await tmp.arrayBuffer())
     photographDataURL = `data:image/jpeg;base64,${buffer.toString('base64')}`
   }
   const photographerURL = body.get('_photographer-image') as string
   if (photographerURL) {
-    const tmp = await fetch(photographerURL + '?tr=bl-90')
+    const tmp = await fetch(photographerURL + '?tr=w-200,h-200,bl-90')
     const buffer = Buffer.from(await tmp.arrayBuffer())
     photographerDataURL = `data:image/jpeg;base64,${buffer.toString('base64')}`
   }
