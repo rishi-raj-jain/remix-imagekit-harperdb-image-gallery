@@ -1,11 +1,14 @@
 import stylesheet from '~/css/tailwind.css'
+import Pic from './components/Placeholder/Pic'
+import Pics from './components/Placeholder/Pics'
 import type { LinksFunction } from '@remix-run/node'
 import { cssBundleHref } from '@remix-run/css-bundle'
-import { Link, Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+import { Link, Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useNavigation } from '@remix-run/react'
 
 export const links: LinksFunction = () => [...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []), { rel: 'stylesheet', href: stylesheet }]
 
 const App = () => {
+  const navigation = useNavigation()
   return (
     <html lang="en">
       <head>
@@ -24,7 +27,7 @@ const App = () => {
               View All
             </Link>
           </div>
-          <Outlet />
+          {navigation.location?.pathname === '/pics' ? <Pics /> : navigation.location?.pathname.includes('/pics/') ? <Pic /> : <Outlet />}
         </div>
         <ScrollRestoration />
         <Scripts />

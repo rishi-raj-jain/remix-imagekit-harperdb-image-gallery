@@ -1,20 +1,6 @@
-export default function ({
-  url,
-  alt,
-  width,
-  height,
-  loading,
-  className,
-  backgroundImage,
-}: {
-  url: string
-  alt?: string
-  className?: string
-  width: number | string
-  height: number | string
-  backgroundImage?: string
-  loading?: 'lazy' | 'eager'
-}) {
+import { ImageProps } from '~/lib/types'
+
+export default function ({ url, alt, width, height, loading, className, backgroundImage }: ImageProps) {
   return (
     <img
       src={url}

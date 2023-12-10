@@ -1,9 +1,10 @@
 import Image from './Image'
 import { useState } from 'react'
 import UploadIcon from './Upload-Icon'
+import { UploadProps } from '~/lib/types'
 import { IKContext, IKUpload } from 'imagekitio-react'
 
-export default function ({ selector, className }: { selector: string; className?: string }) {
+export default function ({ selector, className }: UploadProps) {
   const attribute = '_' + selector
   const [uploadedURL, setUploadedURL] = useState()
   const [uploadedImage, setUploadedImage] = useState()
