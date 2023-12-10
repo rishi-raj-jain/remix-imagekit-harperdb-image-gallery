@@ -14,7 +14,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const photographWidth = body.get('_photograph_w') as string
   const photographHeight = body.get('_photograph_h') as string
   if (photographURL) {
-    const tmp = await fetch(photographURL + '?tr=w-200,h-200,bl-90')
+    const tmp = await fetch(photographURL + '?tr=w-200,h-200,bl-50')
     const buffer = Buffer.from(await tmp.arrayBuffer())
     photographDataURL = `data:image/jpeg;base64,${buffer.toString('base64')}`
   }
@@ -22,7 +22,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const photographerWidth = body.get('_photographer-image_w') as string
   const photographerHeight = body.get('_photographer-image_h') as string
   if (photographerURL) {
-    const tmp = await fetch(photographerURL + '?tr=w-200,h-200,bl-90')
+    const tmp = await fetch(photographerURL + '?tr=w-200,h-200,bl-50')
     const buffer = Buffer.from(await tmp.arrayBuffer())
     photographerDataURL = `data:image/jpeg;base64,${buffer.toString('base64')}`
   }

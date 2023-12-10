@@ -2,6 +2,7 @@ import Image from '~/components/Image'
 import { ActionFunctionArgs, json, redirect } from '@remix-run/node'
 import { searchByConditions, searchByValue } from '~/lib/harper.server'
 import { Form, Link, useActionData, useLoaderData } from '@remix-run/react'
+import { Record } from '~/lib/types'
 
 export async function loader() {
   return await searchByValue('*', 'id')
@@ -40,8 +41,9 @@ export default function Pics() {
         </button>
       </Form>
       {(actionData?.result || images)
-        .filter((i: { [k: string]: string }) => i.slug && i.photographURL && i.photographWidth)
-        .map((i: { [k: string]: string }, _: number) => (
+        .filter((i: Record) => i.slug && i.photographURL && i.photographWidth)
+        .sort((a: Record, b: Record) => (a.__updatedtime__ < b.__updatedtime__ ? 1 : -1))
+        .map((i: Record, _: number) => (
           <Link className="relative mt-8" key={_} to={'/pics/' + i.slug}>
             <div className="absolute bg-black border border-gray-600 rounded px-3 py-1 bottom-4 left-4 flex flex-row items-center min-h-[20px] gap-x-2 z-20">
               <Image
