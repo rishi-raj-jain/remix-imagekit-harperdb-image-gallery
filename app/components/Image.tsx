@@ -7,6 +7,7 @@ export default function ({ url, alt, width, height, loading, className, backgrou
       width={width}
       height={height}
       alt={alt || ''}
+      decoding="async"
       loading={loading || 'lazy'}
       style={{ backgroundImage: `url(${backgroundImage || url + '?tr=bl-50'})`, transform: 'translate3d(0, 0, 0)' }}
       className={[className, 'bg-cover bg-center bg-no-repeat transform will-change-auto'].filter((i) => i).join(' ')}
